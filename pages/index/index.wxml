@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<image src='../../image/day.jpg' style='width :100%;height:350px;'></image>
+<view class="container">
+  <view class='top'> 
+       <view class='font-xs'>{{district}}</view>
+        <view class='font-xs'>{{street}}</view>
+        <text class='font-xl'>{{weather.now.tmp}}°</text>
+        <view>
+         <text class='font-xs'>{{weather.now.cond.txt}} | </text>    
+        <text class='font-xs'>空气{{weather.suggestion.air.brf}}</text>
+        </view> 
+        <view class='txt'>{{weather.suggestion.comf.txt}}</view>  
+  </view>
+  <view class='bottom'>
+      <view >
+      <view class='font-xs'>{{weather.now.wind.dir}}</view><view class='font-md'>{{weather.now.wind.sc}}</view>
+      </view>
+      <view class='bl-right'></view>
+      <view > 
+     <view class='font-xs'>相对温度</view><view  class='font-md'>{{weather.now.hum}}%</view>
+      </view>
+       <view class='bl-right'></view>
+      <view>
+      <view class='font-xs'>体感温度</view><view  class='font-md'>{{weather.now.fl}}°</view>
+      </view>
+  </view>
+</view>
+<view class='list'>
+   <view class='list1' wx:for="{{weather.daily_forecast}}" wx:for-item="item" wx:for-index="idx" wx:key="unique">
+  <view wx:if="{{idx == 0}}"> 明天 </view>
+  <view wx:elif="{{idx == 1}}"> 后天 </view>
+  <view wx:else> {{day}} </view>
+   <view > <image src='../../image/ico/{{item.cond.code_d}}.png' class='ico'></image>{{item.cond.txt_d}}</view>
+  <view>{{item.tmp.max}}°/{{item.tmp.min}}°</view> 
+  </view> 
+</view>
